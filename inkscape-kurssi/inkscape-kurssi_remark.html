@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Title</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# Inkscape
+
+Ville Ranki <ville.ranki@iki.fi>
+
+Tampere Hacklab
+
+---
+
+# Kurssin sisältö
+
+- Inkscapesta yleensä
+- Pathit ja objektit
+- Demo: Piirtotyökalut, pathien muokkaus
+- Viivojen ja pintojen väritys
+
+Painotus laserleikkauksessa tarvittaviin asioihin!
+
+---
+
+# Inkscapesta
+
+- Ilmainen, avoimen lähdekoodin vektoripiirto-ohjelma
+- Sodipodi (1999)
+- Inkscape (2003)
+- Kehitetty C++:lla, Plugin-rajapinta Pythonia
+- Projektin vetäjät: Ted Gould, Bryce Harrington, Nathan Hurst, and MenTaLguY
+- Alustariippumaton (Win, Mac, Lin)
+
+---
+
+# Inkscapesta
+
+- Helppo aloittelijalle
+- Ei CAD-ohjelma, vaan piirto-ohjelma
+- Ei ammattilaistasoinen
+- Paljon plugineja (mm laserleikkaukseen)
+- Käyttää sisäisesti SVG-formaattia (+ importterit ja exportterit vaikka mihin)
+- Aktiivinen kehitys, uusin versio 0.91 (30. Tammikuuta 2015)
+
+---
+
+# Pathit vs objectit
+
+- Path (polku?) on joukko kulmapisteitä ja niitä yhdistäviä viivoja.
+- Objekti (olio) on graafinen elementti, jota voi muokata vapaammin.
+- Objektin voi muuttaa pathiksi, pathia ei.
+- Laserin kanssa käytetään vain patheja!
+
+---
+
+# (Demo)
+
+- Draw bezier curves and straight lines
+- Jotain objekteja
+- Valintatyökalu (alareunassa lukee mikä on)
+- Ctrl, alt, shift, jne
+- Object to path
+- Edit paths by nodes
+- Monen pisteen valinta
+- Tuplaklikkauksella lisäys
+- Pisteen poisto
+- Viivan lisäys
+- Shift pohjassa bezier
+- Segmentin suoristus
+- Tehdään lopuksi suljettu pathi
+
+---
+
+# Viivojen ja pintojen väritys
+
+- Edit object's colors, gradients jne.. (shift-ctrl-f)
+- Patheilla ja objekteilla on viivan väri (Stroke paint) ja täyttöväri (Fill).
+- Täältä voi editoida pathin/objektin värejä ja muita ominaisuuksia.
+- Laserleikatessa poista viivan väri käytöstä!
+- Läpinäkyvyys (opacity) ja värit ok!
+
+---
+
+# Mittayksiköt ja dokumentin ominaisuudet
+
+- File|Document properties
+- General: Default units: mm
+
+---
+
+# Pathien muokkaus boolen operaatioilla
+
+- Joukko operaatioilla, joilla suljettuja patheja voi yhdistellä. 
+- Pathien valintajärjestyksellä on merkitystä joissain operaatioissa!
+- Demo
+
+---
+
+# Demoa
+- Snappaus, guidet ja grid
+- Gridin asetukset document propertieseissa
+- Layerit
+- Bittikartan importtaus, trace bitmap
+
+---
+
+# Kysyttävää?
+
+- http://tampere.hacklab.fi
+- IRC: #trehacklab @ IRCnet
+
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
