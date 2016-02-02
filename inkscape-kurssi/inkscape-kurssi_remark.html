@@ -117,7 +117,70 @@ Painotus laserleikkauksessa tarvittaviin asioihin!
 - Snappaus, guidet ja grid
 - Gridin asetukset document propertieseissa
 - Layerit
+- Groupit
 - Bittikartan importtaus, trace bitmap
+
+---
+
+# Laserleikkaus
+
+- Laserleikkuri vaatii g-koodimuoodossa olevat leikkauskomennot
+- G-koodi on (melko) laitekohtaista ja generoidaan inkscapella
+- G-kooditiedosto (.ngc) kiikutetaan leikkurille USB-tikulla tai verkkolevyn kautta
+
+---
+
+# Mittatarkka leikkaus
+
+- Lasersäteellä on paksuus, noin 0.1mm (kerf).
+- Jos teet reiän, tee siitä 0.05mm pienempi kuin haluat.
+- Tee kappaleista 0.05mm suurempia kuin haluat.
+- Jos haluat oikeasti tarkkaa, leikkaa materiaalista testikappale josta mittaat tarkat korjausarvot.
+
+---
+
+# Layerien käyttö
+
+- Leikkaa ensin kaiverrukset, sitten aukot ja viimeisenä kappale irti levystä.
+- Tämä onnistuu layereillä. 
+- Ylin layeri leikataan ensin, sitten seuraava jne.
+- Tarkista layerien sisältö ennen leikkausta.
+
+---
+
+# Laserin parametrit
+
+- Tärkeimmät parametrit: leikkausteho ja -nopeus
+- Teho prosentteina
+- Nopeus mm/s
+
+---
+
+# Parametreistä
+
+- Järkevät arvot riippuvat materiaalista ja sen paksuudesta.
+- Esim 50% ja 500mm/s leikkaa ohutta vanerilevyä.
+- Esim 10% ja 500mm/s kaivertaa samaa.
+- Paksummille materiaaleille lisää tehoa ja/tai lisää nopeutta.
+- Nopeus max 3000-4000mm/s, muuten alkaa reunat pyöristyä.
+- Mielummin pienellä teholla ja hitaalla nopeudella, jos haluaa tarkkaa.
+
+---
+
+# G-koodin generointi laserille
+
+- Tarvitaan plugin
+- Header + footer 
+- Pluginin asetukset
+
+---
+
+# Pluginin käyttö
+
+- Kaiken oltava patheja
+- Leikkausjärjestys layereillä, ylin ensin
+- Layerin nimi: (leikkausteho %) [feed=(nopeus),ppm=40]
+ - esimerkiksi 50 [feed=600,ppm=40]. ppm-arvoa ei käytetä oikeasti.
 
 ---
 
