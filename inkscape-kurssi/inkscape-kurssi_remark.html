@@ -34,6 +34,8 @@ Tampere Hacklab
 - Pathit ja objektit
 - Demo: Piirtotyökalut, pathien muokkaus
 - Viivojen ja pintojen väritys
+- Guidet, gridi, jne 
+- Laserleikkaukseen liittyvää tietoa
 
 Painotus laserleikkauksessa tarvittaviin asioihin!
 
@@ -65,7 +67,7 @@ Painotus laserleikkauksessa tarvittaviin asioihin!
 
 - Path (polku?) on joukko kulmapisteitä ja niitä yhdistäviä viivoja.
 - Objekti (olio) on graafinen elementti, jota voi muokata vapaammin.
-- Objektin voi muuttaa pathiksi, pathia ei.
+- Objektin voi muuttaa pathiksi, pathia ei takaisin objektiksi.
 - Laserin kanssa käytetään vain patheja!
 
 ---
@@ -76,6 +78,7 @@ Painotus laserleikkauksessa tarvittaviin asioihin!
 - Jotain objekteja
 - Valintatyökalu (alareunassa lukee mikä on)
 - Ctrl, alt, shift, jne
+- Pyöritys ja skaalaus
 - Object to path
 - Edit paths by nodes
 - Monen pisteen valinta
@@ -114,6 +117,7 @@ Painotus laserleikkauksessa tarvittaviin asioihin!
 ---
 
 # Demoa
+
 - Snappaus, guidet ja grid
 - Gridin asetukset document propertieseissa
 - Layerit
@@ -159,8 +163,8 @@ Painotus laserleikkauksessa tarvittaviin asioihin!
 # Parametreistä
 
 - Järkevät arvot riippuvat materiaalista ja sen paksuudesta.
-- Esim 50% ja 500mm/s leikkaa ohutta vanerilevyä.
-- Esim 10% ja 500mm/s kaivertaa samaa.
+- Esim 50% ja 500mm/s leikkaa 3-4mm vanerilevyä.
+- Esim 5% ja 500mm/s kaivertaa samaa.
 - Paksummille materiaaleille lisää tehoa ja/tai lisää nopeutta.
 - Nopeus max 3000-4000mm/s, muuten alkaa reunat pyöristyä.
 - Mielummin pienellä teholla ja hitaalla nopeudella, jos haluaa tarkkaa.
@@ -170,7 +174,6 @@ Painotus laserleikkauksessa tarvittaviin asioihin!
 # G-koodin generointi laserille
 
 - Tarvitaan plugin
-- Header + footer 
 - Pluginin asetukset
 
 ---
@@ -179,8 +182,8 @@ Painotus laserleikkauksessa tarvittaviin asioihin!
 
 - Kaiken oltava patheja
 - Leikkausjärjestys layereillä, ylin ensin
-- Layerin nimi: (leikkausteho %) [feed=(nopeus),ppm=40]
- - esimerkiksi 50 [feed=600,ppm=40]. ppm-arvoa ei käytetä oikeasti.
+- Layerin nimi: (leikkausteho %) [feed=(nopeus)]
+- esimerkiksi 50 [feed=600] leikkaa 50% teholla 600mm/s.
 
 ---
 
