@@ -75,7 +75,7 @@ Painotus laserleikkauksessa tarvittaviin asioihin!
 # (Demo)
 
 - Draw bezier curves and straight lines
-- Jotain objekteja
+- Piirretään jotain objekteja
 - Valintatyökalu (alareunassa lukee mikä on)
 - Ctrl, alt, shift, jne
 - Pyöritys ja skaalaus
@@ -105,24 +105,33 @@ Painotus laserleikkauksessa tarvittaviin asioihin!
 
 - File|Document properties
 - General: Default units: mm
+- Sivun koko
 
 ---
 
 # Pathien muokkaus boolen operaatioilla
 
 - Joukko operaatioilla, joilla suljettuja patheja voi yhdistellä. 
-- Pathien valintajärjestyksellä on merkitystä joissain operaatioissa!
+- Pathien syvyysjärjestyksellä on merkitystä joissain operaatioissa!
 - Demo
 
 ---
 
-# Demoa
+# Piirron aputyökalut
 
 - Snappaus, guidet ja grid
 - Gridin asetukset document propertieseissa
 - Layerit
 - Groupit
-- Bittikartan importtaus, trace bitmap
+
+---
+
+# Bittikartta(rasteri)kuvat
+
+- LinuxCNC ei tue (tällä hetkellä) rasterikuvien piirtoa helposti
+- Bittikartan importtaus
+- Päälle piirtäminen
+- Trace bitmap
 
 ---
 
@@ -130,7 +139,7 @@ Painotus laserleikkauksessa tarvittaviin asioihin!
 
 - Laserleikkuri vaatii g-koodimuoodossa olevat leikkauskomennot
 - G-koodi on (melko) laitekohtaista ja generoidaan inkscapella
-- G-kooditiedosto (.ngc) kiikutetaan leikkurille USB-tikulla tai verkkolevyn kautta
+- G-kooditiedosto (.ngc) kiikutetaan leikkurille verkkolevyn kautta tai USB-tikulla
 
 ---
 
@@ -156,18 +165,18 @@ Painotus laserleikkauksessa tarvittaviin asioihin!
 
 - Tärkeimmät parametrit: leikkausteho ja -nopeus
 - Teho prosentteina
-- Nopeus mm/s
+- Nopeus mm/minuutti
 
 ---
 
 # Parametreistä
 
 - Järkevät arvot riippuvat materiaalista ja sen paksuudesta.
-- Esim 50% ja 500mm/s leikkaa 3-4mm vanerilevyä.
-- Esim 5% ja 500mm/s kaivertaa samaa.
+- Esim 50% ja 500mm/min leikkaa 3-4mm vanerilevyä.
+- Esim 5% ja 500mm/min kaivertaa samaa.
 - Paksummille materiaaleille lisää tehoa ja/tai lisää nopeutta.
-- Nopeus max 3000-4000mm/s, muuten alkaa reunat pyöristyä.
-- Mielummin pienellä teholla ja hitaalla nopeudella, jos haluaa tarkkaa.
+- Nopeus max 1000mm/min, muuten alkaa terävät kulmat pyöristyä.
+- Mieluiten pienellä teholla ja hitaalla nopeudella. Säästää myös laserputkea ja peilejä!
 
 ---
 
@@ -175,15 +184,36 @@ Painotus laserleikkauksessa tarvittaviin asioihin!
 
 - Tarvitaan plugin
 - Pluginin asetukset
+- Asetukset löytyy myös wikistä, ei tarvi muistaa ulkoa
 
 ---
 
 # Pluginin käyttö
 
-- Kaiken oltava patheja
-- Leikkausjärjestys layereillä, ylin ensin
-- Layerin nimi: (leikkausteho %) [feed=(nopeus)]
-- esimerkiksi 50 [feed=600] leikkaa 50% teholla 600mm/s.
+- Kaiken oltava patheja.
+- Leikkausjärjestys layereillä, ylin ensin.
+- Layerin nimi: (leikkausteho %) [feed=(nopeus)].
+- esimerkiksi 50 [feed=600] leikkaa 50% teholla 600mm/min.
+- Huomaa: hakasulut (ei normisulut). Ei välilyöntejä feediarvoon.
+- Jos nämä puuttuu, käytetään defaulttiarvoja 10% ja 300mm/min.
+
+---
+
+# Ennen leikkausta
+
+- Valitse kaikki kaikilla layereillä (ctrl-alt-a)
+- Path | Object to path
+- Group | Ungroup
+- Sulje kaikki layerisilmät, avaa järjestyksessä ylhäältä alas. Tämä on leikkuujärjestys.
+- Avaa exportteri Extensions | Export | TurnKey laser (kaikki pitää olla yhä valittuna)
+
+---
+
+# Lisävinkkejä
+
+- Tsekkaa Thingiversestä valmiita laseroitavia esineitä http://www.thingiverse.com/tag:laser
+- Tabbed box generatoreilla pystyy tekemään omilla mitoilla sormiliitoksilla kasattavai laatikoita. Löytyy esim Inkscape-extensionina ja selainpohjaisina.
+- Isot leikkaukset kannattaa kokeilla esim aaltopahville kalliin materiaalin tuhlauksen sijaan.
 
 ---
 
