@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Title</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# Inkscape
+
+Ville Ranki <ville.ranki@iki.fi>
+
+Tampere Hacklab
+
+---
+
+# Kurssin sisältö
+
+- Inkscapesta yleensä
+- Pathit ja objektit
+- Demo: Piirtotyökalut, pathien muokkaus
+- Viivojen ja pintojen väritys
+- Guidet, gridi, jne 
+- Laserleikkaukseen liittyvää tietoa
+
+Painotus laserleikkauksessa tarvittaviin asioihin!
+
+---
+
+# Inkscapesta
+
+- Ilmainen, avoimen lähdekoodin vektoripiirto-ohjelma
+- Sodipodi (1999)
+- Inkscape (2003)
+- Kehitetty C++:lla, Plugin-rajapinta Pythonia
+- Projektin vetäjät: Ted Gould, Bryce Harrington, Nathan Hurst, and MenTaLguY
+- Alustariippumaton (Win, Mac, Lin)
+
+---
+
+# Inkscapesta
+
+- Helppo aloittelijalle
+- Ei CAD-ohjelma, vaan piirto-ohjelma
+- Ei ammattilaistasoinen
+- Paljon plugineja (mm laserleikkaukseen)
+- Käyttää sisäisesti SVG-formaattia (+ importterit ja exportterit vaikka mihin)
+- Aktiivinen kehitys, uusin versio 0.91 (30. Tammikuuta 2015)
+
+---
+
+# Pathit vs objectit
+
+- Path (polku?) on joukko kulmapisteitä ja niitä yhdistäviä viivoja.
+- Objekti (olio) on graafinen elementti, jota voi muokata vapaammin.
+- Objektin voi muuttaa pathiksi, pathia ei takaisin objektiksi.
+- Laserin kanssa käytetään vain patheja!
+
+---
+
+# (Demo)
+
+- Draw bezier curves and straight lines
+- Piirretään jotain objekteja
+- Valintatyökalu (alareunassa lukee mikä on)
+- Ctrl, alt, shift, jne
+- Pyöritys ja skaalaus
+- Object to path
+- Edit paths by nodes
+- Monen pisteen valinta
+- Tuplaklikkauksella lisäys
+- Pisteen poisto
+- Viivan lisäys
+- Shift pohjassa bezier
+- Segmentin suoristus
+- Tehdään lopuksi suljettu pathi
+
+---
+
+# Viivojen ja pintojen väritys
+
+- Edit object's colors, gradients jne.. (shift-ctrl-f)
+- Patheilla ja objekteilla on viivan väri (Stroke paint) ja täyttöväri (Fill).
+- Täältä voi editoida pathin/objektin värejä ja muita ominaisuuksia.
+- Laserleikatessa poista viivan väri käytöstä!
+- Läpinäkyvyys (opacity) ja värit ok!
+
+---
+
+# Mittayksiköt ja dokumentin ominaisuudet
+
+- File|Document properties
+- General: Default units: mm
+- Sivun koko
+
+---
+
+# Pathien muokkaus boolen operaatioilla
+
+- Joukko operaatioilla, joilla suljettuja patheja voi yhdistellä. 
+- Pathien syvyysjärjestyksellä on merkitystä joissain operaatioissa!
+- Demo
+
+---
+
+# Piirron aputyökalut
+
+- Snappaus, guidet ja grid
+- Gridin asetukset document propertieseissa
+- Layerit
+- Groupit
+
+---
+
+# Bittikartta(rasteri)kuvat
+
+- LinuxCNC ei tue (tällä hetkellä) rasterikuvien piirtoa helposti
+- Bittikartan importtaus
+- Päälle piirtäminen
+- Trace bitmap
+
+---
+
+# Laserleikkaus
+
+- Laserleikkuri vaatii g-koodimuoodossa olevat leikkauskomennot
+- G-koodi on (melko) laitekohtaista ja generoidaan inkscapella
+- G-kooditiedosto (.ngc) kiikutetaan leikkurille verkkolevyn kautta tai USB-tikulla
+
+---
+
+# Mittatarkka leikkaus
+
+- Lasersäteellä on paksuus, noin 0.1mm (kerf).
+- Jos teet reiän, tee siitä 0.05mm pienempi kuin haluat.
+- Tee kappaleista 0.05mm suurempia kuin haluat.
+- Jos haluat oikeasti tarkkaa, leikkaa materiaalista testikappale josta mittaat tarkat korjausarvot.
+
+---
+
+# Layerien käyttö
+
+- Leikkaa ensin kaiverrukset, sitten aukot ja viimeisenä kappale irti levystä.
+- Tämä onnistuu layereillä. 
+- Ylin layeri leikataan ensin, sitten seuraava jne.
+- Tarkista layerien sisältö ennen leikkausta.
+
+---
+
+# Laserin parametrit
+
+- Tärkeimmät parametrit: leikkausteho ja -nopeus
+- Teho prosentteina
+- Nopeus mm/minuutti
+
+---
+
+# Parametreistä
+
+- Järkevät arvot riippuvat materiaalista ja sen paksuudesta.
+- Esim 50% ja 500mm/min leikkaa 3-4mm vanerilevyä.
+- Esim 5% ja 500mm/min kaivertaa samaa.
+- Paksummille materiaaleille lisää tehoa ja/tai lisää nopeutta.
+- Nopeus max 1000mm/min, muuten alkaa terävät kulmat pyöristyä.
+- Mieluiten pienellä teholla ja hitaalla nopeudella. Säästää myös laserputkea ja peilejä!
+
+---
+
+# G-koodin generointi laserille
+
+- Tarvitaan plugin
+- Pluginin asetukset
+- Asetukset löytyy myös wikistä, ei tarvi muistaa ulkoa
+
+---
+
+# Pluginin käyttö
+
+- Kaiken oltava patheja.
+- Leikkausjärjestys layereillä, ylin ensin.
+- Layerin nimi: (leikkausteho %) [feed=(nopeus)].
+- esimerkiksi 50 [feed=600] leikkaa 50% teholla 600mm/min.
+- Huomaa: hakasulut (ei normisulut). Ei välilyöntejä feediarvoon.
+- Jos nämä puuttuu, käytetään defaulttiarvoja 10% ja 300mm/min.
+
+---
+
+# Ennen leikkausta
+
+- Valitse kaikki kaikilla layereillä (ctrl-alt-a)
+- Path | Object to path
+- Group | Ungroup
+- Sulje kaikki layerisilmät, avaa järjestyksessä ylhäältä alas. Tämä on leikkuujärjestys.
+- Avaa exportteri Extensions | Export | TurnKey laser (kaikki pitää olla yhä valittuna)
+
+---
+
+# Lisävinkkejä
+
+- Tsekkaa Thingiversestä valmiita laseroitavia esineitä http://www.thingiverse.com/tag:laser
+- Tabbed box generatoreilla pystyy tekemään omilla mitoilla sormiliitoksilla kasattavai laatikoita. Löytyy esim Inkscape-extensionina ja selainpohjaisina.
+- Isot leikkaukset kannattaa kokeilla esim aaltopahville kalliin materiaalin tuhlauksen sijaan.
+
+---
+
+# Kysyttävää?
+
+- http://tampere.hacklab.fi
+- IRC: #trehacklab @ IRCnet
+
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
